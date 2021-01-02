@@ -9,7 +9,7 @@ const { Option } = Select;
 class Login extends Component {
 
 handleChange = (id) => {
-const { dispatch, authedUser } = this.props
+const { dispatch } = this.props
 console.log('e is ', id)
 dispatch(setAuthedUser({id}))
 }
