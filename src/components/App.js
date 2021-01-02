@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import Login from './Login'
-import { Button, Menu } from 'antd';
+import Question from './Question'
+import Nav from './Nav'
 import '../App.css';
 
 class App extends Component {
@@ -15,21 +16,25 @@ class App extends Component {
 
 
   render() {
- 
+    console.log('App', this.props)
     return (
-      <Login/>
+
+      <div>
+        <Nav />
+        {this.props.authedUser
+          ? <Question/>
+          : <Login />}
+      </div>
+
 
     )
   }
-
-
-
 }
 
 
 function mapStateToProps({ authedUser }) {
   return {
-    notLogged: authedUser === null
+    authedUser
   }
 }
 
