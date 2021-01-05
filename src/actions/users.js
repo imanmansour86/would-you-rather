@@ -1,5 +1,6 @@
 export const RECEIVE_USERS = 'RECEIVE_USERS'
-export const RECEIVE_USER_ANSWER = 'RECEIVE_USER_ANSWER'
+export const ADD_QUESTION_TO_AUTHED_USER = 'ADD_QUESTION_TO_AUTHED_USER'
+export const SAVE_QUESTION_ANSWER_TO_AUTHED_USER = 'SAVE_QUESTION_ANSWER_TO_AUTHED_USER'
 
 export function receiveUsers(users) {
     return {
@@ -9,3 +10,19 @@ export function receiveUsers(users) {
 }
 
 
+export function addQuestionToAuthedUser(authedUser, id) {
+    return {
+      type: ADD_QUESTION_TO_AUTHED_USER,
+      authedUser,
+      id
+    };
+  }
+  
+//   export function saveQuestionAnswerToAuthedUser(authedUser, id, answer) {
+//     return {
+//       type: SAVE_QUESTION_ANSWER_TO_AUTHED_USER,
+//       authedUser,
+//       id,
+//       answer
+//     };
+//   }

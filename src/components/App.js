@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import Login from './Login'
-import Question from './Question'
-import Nav from './Nav'
+import QuestionCard from './QuestionCard'
+import Question from './QuestionCard'
+import NewQuestion from './NewQuestion'
+import Nav from './Navigation'
 import '../App.css';
 
 class App extends Component {

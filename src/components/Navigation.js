@@ -4,7 +4,7 @@ import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/ico
 
 const { SubMenu } = Menu;
 
-class Nav extends React.Component {
+class Navigation extends React.Component {
  
   render() {
   
@@ -24,4 +24,4 @@ class Nav extends React.Component {
   }
 }
 
-export default Nav
+export default Navigation

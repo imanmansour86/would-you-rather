@@ -1,6 +1,6 @@
-import { save}
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
-export const RECEIVE_USER_ANSWER = 'RECEIVE_USER_ANSWER'
+export const ADD_QUESTION = 'ADD_QUESTION'
+export const SAVE_USER_ANSWER = 'SAVE_USER_ANSWER'
 
 export function receiveQuestions(questions) {
     return {
@@ -9,27 +9,24 @@ export function receiveQuestions(questions) {
     }
 }
 
-
-export function userAnswer({authedUser, id, answer}) {
+export function addQuestion(question){
     return {
-        type: RECEIVE_USER_ANSWER,
+        type: ADD_QUESTION,
+        question
+    }
+}
+
+
+
+export function saveUserAnswer({authedUser, id, answer}) {
+    console.log('hhhh', authedUser, id, answer)
+    return {
+        type: SAVE_USER_ANSWER,
         authedUser,
         id,
-        answer
+        answer,
     }
 }
 
 
-export function handleUserAnswer(info) {
-    return(dispatch) => {
-        dispatch(userAnswer(info)) // Optimistic Updating; updating the UI,
-         //before the action gets recorded on the backend so it seems more performant.
 
-        return saveQuestionAnswer(info) //save info to db 
-        .catch((e)=> {
-            console.warn('Error in handle answer ', e)
-            dispatch(userAnswer(info)) 
-            alert('There was an error choosing an answer. Try again.')
-        })
-    }
-}
