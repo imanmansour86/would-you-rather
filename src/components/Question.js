@@ -60,7 +60,7 @@ class Question extends Component {
                     type='submit'
                     disabled={answer === ''}
                     onClick={()=>{}}>
-                    ViewAll
+                    View Results
                  </button>
 
                     :

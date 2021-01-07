@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Login from './Login'
 import Questions from './Questions'
 import Question from './Question'
+import Results from './Results'
 import LeaderBoard from './LeaderBoard'
 import NewQuestion from './NewQuestion'
 import Navigation from './Navigation'
@@ -35,7 +36,8 @@ class App extends Component {
               <Route path='/add' component={NewQuestion} />
               <Route path='/leaderboard' component={LeaderBoard} />
               <Route path='/all-questions' exact component={Questions} />
-              <Route path='/' exact component={() => <Question index={0} id={question.id} />} />
+              <Route path='/question/:id' component={Results} />
+              <Route path='/' exact component={() => <Question id={question.id} />} />
             </div> : <Login />}
         </Fragment>
       </Router>
