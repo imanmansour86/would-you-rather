@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Radio } from 'antd';
 import { handleUserAnswer } from '../actions/shared'
+import { Route , withRouter} from 'react-router-dom';
+
 
 
 class Question extends Component {
@@ -19,6 +21,20 @@ class Question extends Component {
             questionId: this.props.question.id
         }))
     }
+
+  
+
+      
+    toResults = (e,id) => {
+        const {  question } = this.props
+        console.log('test1234', )
+        e.preventDefault()
+      
+        this.props.history.push(`/question/${question.id}`)
+
+    }
+
+
 
     handleSubmit = (e) => {
 
@@ -59,7 +75,7 @@ class Question extends Component {
                 <button className='btn'
                     type='submit'
                     disabled={answer === ''}
-                    onClick={()=>{}}>
+                    onClick={(e)=>{this.toResults(e, question.id)}}>
                     View Results
                  </button>
 
@@ -69,7 +85,7 @@ class Question extends Component {
                     type='submit'
                     disabled={answer === ''}
                     onClick={e => this.handleSubmit(e)}>
-                    Submit
+                    View Question
                 </button> } 
                 <br /></div>
         ) : <div>Invalid question</div>
@@ -95,4 +111,4 @@ function mapStateToProps({ users, questions, authedUser }, {id,index}) {
 }
 
 
-export default connect(mapStateToProps)(Question)
+export default withRouter(connect(mapStateToProps)(Question))

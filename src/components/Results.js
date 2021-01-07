@@ -7,29 +7,32 @@ class Results extends Component {
   
 
     render() {
-        console.log('hello 5555', this.props)
+        
   
-        const { question } = this.props
+        const { question, users } = this.props
         const {optionOne, optionTwo, avatar } = question 
         const totalVotes = optionOne.votes.length + optionTwo.votes.length
         const optionOnePercent = ((optionOne.votes.length/totalVotes)*100).toFixed(2)
         const optionTwoPercent = ((optionTwo.votes.length/totalVotes)*100).toFixed(2)
 
-        console.log('answer here is', question)
+        console.log('av', avatar)
      
 
         return question ? (
             <div key={question.id}>
-                <div>Asked by {this.props.users[question.author].name} 
                 <h1>Results</h1>
-                <img src= {avatar} alt={`Avatar of ${this.props.users[question.author].name}`} className='avatar'></img>
+                <div>Asked by {users[question.author].name} 
+                
+                <img src= {users[question.author].avatarURL} className='avatar'
+                style = {{width: 200, padding: 2} }
+                ></img>
                             </div>
                     <div>
                         <div key={question.id + "o1"} >Would you rahter {question.optionOne.text}</div>
                    <div>
                    {optionOne.votes.length}/<h1>out of {totalVotes}</h1>
                        </div> 
-                       <progress id= {question.id} value="32" max="100" width = {optionOnePercent}> 
+                       <progress id= {question.id} value={optionOnePercent} max="100" width = {optionOnePercent}> 
                        
                         </progress>
 
@@ -39,7 +42,7 @@ class Results extends Component {
                         {optionTwo.votes.length} out of/<h1>{totalVotes}</h1>
                             <div>
 
-                        <progress id= {question.id} value="32" max="100" width = {optionTwoPercent}> 
+                        <progress id= {question.id} value={optionTwoPercent} max="100" width = {optionTwoPercent}> 
                        
                        </progress>
 
