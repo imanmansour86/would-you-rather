@@ -18,21 +18,40 @@ class NewQuestion extends Component {
 
         //Add question to store 
         dispatch(handleAddQuestion(optionOne, optionTwo))
-
+        
         this.setState(() => ({
             optionOne: '',
-            optionTwo: ''
+            optionTwo: '',
+            toHome: id ? false : true, 
         }))
     }
+   
+    handleChangeQuestion1 = (e) => {
+        const optionOne = e.target.value
+
+        this.setState(() => ({
+            optionOne
+          
+        }))
+    }
+
+     
+    handleChangeQuestion2 = (e) => {
+        const optionTwo= e.target.value
+
+        this.setState(() => ({
+            optionTwo
+          
+        }))
+    }
+
 
     render() {
                 
         const { optionOne, optionTwo, toHome } = this.state
-
         if (toHome === true) {
             return <Redirect to = '/'/>
         }
-
 
 
         return (
@@ -42,13 +61,14 @@ class NewQuestion extends Component {
 
             <form className = 'new-question' >
                 <input type = 'text' className= 'textarea' maxLength = {280}
-                placeholder = "Enter Option One?" 
+                placeholder = "Enter first option" 
                 value = {optionOne}
                 onChange={this.handleChangeQuestion1}/>
 
                 <br/>
+                <p>Or</p>
                   <input type = 'text' className= 'textarea' maxLength = {280}
-                placeholder = "Enter Option Two?" 
+                placeholder = "Enter second option" 
                 value = {optionTwo}
                 onChange={this.handleChangeQuestion2}/>
 
@@ -56,7 +76,7 @@ class NewQuestion extends Component {
                 <button className= 'btn'
                 type = 'submit'
                 disabled= {optionOne === '' || optionTwo === ''}
-                onSubmit={(e) => this.handleSubmit(e)}>
+                onClick={(e) => this.handleSubmit(e)}>
             
 
                     Submit
@@ -80,5 +100,7 @@ class NewQuestion extends Component {
 
 
 }
+
+
 
 export default connect()(NewQuestion)

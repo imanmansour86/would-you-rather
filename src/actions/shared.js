@@ -26,12 +26,12 @@ export function handleAddQuestion(question1, question2) {
     return (dispatch, getState) => {
 
         const { authedUser } = getState()
-
+        console.log('ttttt', authedUser)
         dispatch(showLoading())
         return saveQuestion({
             optionOneText: question1,
             optionTwoText: question2,
-            author: authedUser
+            author: authedUser.id
 
         })
             .then((question) => {
@@ -44,22 +44,21 @@ export function handleAddQuestion(question1, question2) {
 }
 
 export function handleUserAnswer(qid, answer) {
+    
 
     return (dispatch, getState) => {
         const { authedUser } = getState()
 
-        console.log("aaaa", authedUser)
+    
         dispatch(showLoading())
         return saveQuestionAnswer({
             answer,
             qid,
             authedUser: authedUser.id,
         })
-            .then(({ users, questions }) => {
-                console.log("new questions", questions)
+            .then(() => {
+             
                 dispatch(saveUserAnswer({ id: qid, answer, authedUser: authedUser.id }))
-                // dispatch(receiveQuestions(questions))
-                // dispatch(receiveUsers(users))
                 dispatch(hideLoading())
             })
 

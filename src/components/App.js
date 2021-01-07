@@ -1,12 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Login from './Login'
-import QuestionCard from './QuestionCard'
-import Question from './QuestionCard'
+import Questions from './Questions'
+import Question from './Question'
+import LeaderBoard from './LeaderBoard'
 import NewQuestion from './NewQuestion'
-import Nav from './Navigation'
+import Navigation from './Navigation'
 import '../App.css';
+import LoadingBar from 'react-redux-loading'
 
 class App extends Component {
 
@@ -19,14 +22,23 @@ class App extends Component {
 
   render() {
     console.log('App', this.props)
+    const { question } = this.props;
     return (
+      <Router>
+        <Fragment>
+          <LoadingBar />
+          {this.props.authedUser ?
 
-      <div>
-        <Nav />
-        {this.props.authedUser
-          ? <Question/>
-          : <Login />}
-      </div>
+            <div>
+              <Navigation />
+
+              <Route path='/add' component={NewQuestion} />
+              <Route path='/leaderboard' component={LeaderBoard} />
+              <Route path='/all-questions' exact component={Questions} />
+              <Route path='/' exact component={() => <Question index={0} id={question.id} />} />
+            </div> : <Login />}
+        </Fragment>
+      </Router>
 
 
     )
@@ -34,9 +46,16 @@ class App extends Component {
 }
 
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authedUser, questions }) {
+  let question;
+  if (authedUser) {
+    const unAnsweredQuestions = Object.values(questions).filter(question => !(question.optionOne.votes.includes(authedUser.id)) &&
+      !(question.optionTwo.votes.includes(authedUser.id))).sort((a, b) => b.timestamp - a.timestamp)
+      if(unAnsweredQuestions.length>0) question=unAnsweredQuestions[0]
+  }
   return {
-    authedUser
+    authedUser,
+    question
   }
 }
 

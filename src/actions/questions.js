@@ -19,7 +19,7 @@ export function addQuestion(question){
 
 
 export function saveUserAnswer({authedUser, id, answer}) {
-    console.log('hhhh', authedUser, id, answer)
+  
     return {
         type: SAVE_USER_ANSWER,
         authedUser,

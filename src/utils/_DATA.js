@@ -148,10 +148,11 @@ export function formatQuestion ({ optionOneText, optionTwoText, author }) {
 }
 
 export function _saveQuestion (question) {
+  
   return new Promise((res, rej) => {
     const authedUser = question.author;
     const formattedQuestion = formatQuestion(question);
-
+    console.log('save q in db is',users, authedUser,users[authedUser])
     setTimeout(() => {
       questions = {
         ...questions,

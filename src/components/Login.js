@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import QuestionCard from './QuestionCard'
 import { Select } from 'antd';
 import { setAuthedUser } from '../actions/authedUser'
 
