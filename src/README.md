@@ -1,16 +1,21 @@
 # Would You Rather Project
 
-Would You Rather  Project is a web app that lets a user play the “Would You Rather?” game. The game goes like this: A user is asked a question in the form: “Would you rather [option A] or [option B] ?”.Users will be able to answer questions, see which questions they haven’t answered, see how other people have voted, post questions, and see the ranking of users on the leaderboard.
+Would You Rather  Project is a web app that lets a user play the “Would You Rather?” game. A logged in user asks a question in the form: “Would you rather [option A] or [option B] ?”.Users will be able to answer questions, see which questions they haven’t answered, see how other people have voted, post questions, and see the ranking of users on the leaderboard.
 
 ## Getting Started
 
-* create-react-app would-you-rather
 
-* Install: 
-        yarn add react-redux redux
-        yarn add redux-thunk
-        yarn add react-redux-loading
-        yarn add react-router-dom
+* Git clone the repo: 
+
+* In terminal run:
+
+        - npm install
+
+
+        - npm start
+
+* App will launch at http://localhost:3000
+
 
 ## Data
 

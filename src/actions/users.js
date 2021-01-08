@@ -17,3 +17,12 @@ export function addQuestionToAuthedUser(authedUser, id) {
   };
 }
 
+  export function saveQuestionAnswerToAuthedUser({authedUser, id, answer}) {
+    return {
+      type: SAVE_QUESTION_ANSWER_TO_AUTHED_USER,
+      authedUser,
+      id,
+      answer
+    };
+  }
+

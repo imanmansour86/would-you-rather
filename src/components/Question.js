@@ -56,7 +56,7 @@ class Question extends Component {
             height: '30px',
             lineHeight: '30px',
         };
-        const { question, index } = this.props
+        const { question } = this.props
        
         const { answer } = this.state;
 
@@ -65,34 +65,42 @@ class Question extends Component {
         }
         return question ? (
             <div key={question.id}>
-                <h2>question #{index}</h2>
+               
                 <div>{this.props.users[question.author].name} asks:
                             <p>Would you rather</p></div>
-                <Radio.Group onChange={(e) => this.handleChangeQuestion(e, question.id)} >
+                
+                {this.props.hasVoted ? 
+                <div>
+                    <ul>
+                    <li >{question.optionOne.text}
+                    </li>
+                    <li >{question.optionTwo.text}
+                    </li>
+                </ul>
+                <button className='btn'
+                    onClick={(e)=>{this.toResults(e, question.id)}}>
+                    View Results
+                 </button>
+</div>
+                    :
+                    <div>
+                    <Radio.Group onChange={(e) => this.handleChangeQuestion(e, question.id)} >
                     <Radio style={radioStyle} key={question.id + "o1"} value={"optionOne"}>{question.optionOne.text}
                     </Radio>
                     <Radio style={radioStyle} key={question.id + "o2"} value={"optionTwo"}>{question.optionTwo.text}
                     </Radio>
                 </Radio.Group>
-                {this.props.hasVoted ? 
-                <button className='btn'
-                    onClick={(e)=>{this.toResults(e, question.id)}}>
-                    View Results
-                 </button>
-
-                    :
-
                 <button className='btn'
                     type='submit'
                     disabled={answer === ''}
                     onClick={e => this.handleSubmit(e)}>
-                    View Question
-                </button> } 
+                    Answer
+                </button> </div>} 
                 <br /></div>
         ) : <div>Invalid question</div>
     }
 }
-function mapStateToProps({ users, questions, authedUser }, {id,index}) {
+function mapStateToProps({ users, questions, authedUser }, {id}) {
    const question = questions[id]
    let hasVoted = false
    if (question.optionOne.votes.includes(authedUser.id) || question.optionTwo.votes.includes(authedUser.id)){
@@ -103,7 +111,6 @@ function mapStateToProps({ users, questions, authedUser }, {id,index}) {
         authedUser,
         question,
         users,
-        index,
         hasVoted,
 
     }

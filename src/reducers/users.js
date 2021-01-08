@@ -13,8 +13,8 @@ export default function users(state = {}, action) {
             const { authedUser, id } = action
             return {
                 ...state,
-                [authedUser]: {
-                    ...state[authedUser],
+                [authedUser.id]: {
+                    ...state[authedUser.id],
                     questions: state[authedUser.id].questions.concat(id)
                 }
 

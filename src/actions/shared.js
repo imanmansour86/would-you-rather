@@ -1,4 +1,4 @@
-import { receiveUsers, addQuestionToAuthedUser } from '../actions/users'
+import { receiveUsers, addQuestionToAuthedUser, saveQuestionAnswerToAuthedUser } from '../actions/users'
 import { receiveQuestions, addQuestion, saveUserAnswer } from '../actions/questions'
 import { setAuthedUser } from '../actions/authedUser'
 import { showLoading, hideLoading } from 'react-redux-loading'
@@ -56,6 +56,7 @@ export function handleUserAnswer(qid, answer) {
             .then(() => {
 
                 dispatch(saveUserAnswer({ id: qid, answer, authedUser: authedUser.id }))
+                dispatch(saveQuestionAnswerToAuthedUser({ id: qid, answer, authedUser: authedUser.id }))
                 dispatch(hideLoading())
             })
 
