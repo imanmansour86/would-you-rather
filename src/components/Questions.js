@@ -4,7 +4,7 @@ import { Radio } from 'antd';
 import { handleUserAnswer } from '../actions/shared'
 import { Redirect } from 'react-router-dom'
 import { Tabs } from 'antd';
-import Question from './Question'
+import QuestionListItem from './QuestionListItem'
 const { TabPane } = Tabs;
 
 class Questions extends Component {
@@ -13,33 +13,26 @@ class Questions extends Component {
 
 
     render() {
-console.log("render")
 
         const radioStyle = {
             display: 'block',
             height: '30px',
             lineHeight: '30px',
         };
-
-        // if (toHome === true) {
-        //     return <Redirect to='/' />
-        // }
-
-
-        console.log('the questions are', this.props)
+        const {users, answeredQuestions, unAnsweredQuestions, authedUser}=this.props
+        
         return (
             <div>
                 <Tabs defaultActiveKey="2" >
                     <TabPane tab="Answered" key="1">
-                        {this.props.answeredQuestions.map((question, index) => {
-                            console.log("fff", question)
-                            return <Question key={question.id} index={index} id={question.id} />
+                        {answeredQuestions.map((question) => {
+                            return <QuestionListItem key={question.id} user={users[question.author]} authedUser={authedUser} question={question} />
                         }
                         )}
                     </TabPane>
                     <TabPane tab="Unsnswered" key="2">
-                        {this.props.unAnsweredQuestions.map((question, index) => {
-                            return <Question key={question.id} index={index} id={question.id} />
+                        {unAnsweredQuestions.map((question) => {
+                            return <QuestionListItem key={question.id} user={users[question.author]} authedUser={authedUser} question={question} />
                         }
                         
                         )}

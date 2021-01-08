@@ -30,7 +30,7 @@ class Question extends Component {
         console.log('test1234', )
         e.preventDefault()
       
-        this.props.history.push(`/question/${question.id}`)
+        this.props.history.push(`/result/${question.id}`)
 
     }
 

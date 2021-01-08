@@ -22,7 +22,7 @@ class Navigation extends React.Component {
       <nav className='nav'>
         <Menu selectedKeys={[]} mode="horizontal">
           <Menu.Item key="home ">
-            <NavLink to='/all-questions' exact activeClassName='active'>
+            <NavLink to='/' exact activeClassName='active'>
               Home
            </NavLink>
 
