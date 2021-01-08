@@ -1,16 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { Radio } from 'antd';
-import { handleUserAnswer } from '../actions/shared'
-import { Redirect } from 'react-router-dom'
 import { Tabs } from 'antd';
 import QuestionListItem from './QuestionListItem'
 const { TabPane } = Tabs;
 
 class Questions extends Component {
-
-
-
 
     render() {
 
@@ -61,7 +55,6 @@ function mapStateToProps({ users, questions, authedUser }) {
 
     }
 }
-
 
 
 export default connect(mapStateToProps)(Questions)

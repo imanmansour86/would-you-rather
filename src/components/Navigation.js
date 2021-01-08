@@ -14,9 +14,7 @@ class Navigation extends React.Component {
   }
 
   render() {
-
     const { authedUser, users, user } = this.props
-    console.log('heeeeee', this.props)
     const { avatarURL, name } = user
     return (
       <nav className='nav'>
@@ -37,8 +35,6 @@ class Navigation extends React.Component {
               Leader Board
            </NavLink>
            </Menu.Item>
-
-
 
            <Menu.Item key="Logout" style = {{float : "right"}}>
 

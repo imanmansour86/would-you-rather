@@ -23,39 +23,33 @@ class App extends Component {
 
 
   render() {
-    
     const { question } = this.props;
     return (
       <Router>
         <Fragment>
           <LoadingBar />
           {this.props.authedUser ?
-
             <div>
               <Navigation />
               <Switch>
-              <Route path='/add' component={NewQuestion} />
-              <Route path='/leaderboard' component={LeaderBoard} />
-              <Route path='/' exact component={Questions} />
-              <Route path='/result/:id' component={Results} />
-              <Route path='/question/:id' exact component={Question} />
-              <Route path="*" component= {NoMatch} />
+                <Route path='/add' component={NewQuestion} />
+                <Route path='/leaderboard' component={LeaderBoard} />
+                <Route path='/' exact component={Questions} />
+                <Route path='/result/:id' component={Results} />
+                <Route path='/question/:id' exact component={Question} />
+                <Route path="*" component={NoMatch} />
 
               </Switch>
-              
-             
             </div> : <Login />}
         </Fragment>
       </Router>
-
-
     )
   }
 }
 
 
 function mapStateToProps({ authedUser, questions }) {
-  
+
   return {
     authedUser
   }

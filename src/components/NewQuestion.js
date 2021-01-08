@@ -15,8 +15,6 @@ class NewQuestion extends Component {
         e.preventDefault()
         const { optionOne, optionTwo} = this.state
         const { dispatch, id  } = this.props 
-
-        //Add question to store 
         dispatch(handleAddQuestion(optionOne, optionTwo))
         
         this.setState(() => ({
@@ -28,43 +26,34 @@ class NewQuestion extends Component {
    
     handleChangeQuestion1 = (e) => {
         const optionOne = e.target.value
-
         this.setState(() => ({
             optionOne
           
         }))
     }
 
-     
     handleChangeQuestion2 = (e) => {
         const optionTwo= e.target.value
-
         this.setState(() => ({
             optionTwo
           
         }))
     }
 
-
     render() {
-                
         const { optionOne, optionTwo, toHome } = this.state
         if (toHome === true) {
             return <Redirect to = '/'/>
         }
-
-
         return (
 
             <div>
             <h3 className = 'center'>Create new Question</h3>
-
             <form className = 'new-question' >
                 <input type = 'text' className= 'textarea' maxLength = {280}
                 placeholder = "Enter first option" 
                 value = {optionOne}
                 onChange={this.handleChangeQuestion1}/>
-
                 <br/>
                 <p>Or</p>
                   <input type = 'text' className= 'textarea' maxLength = {280}
@@ -82,25 +71,9 @@ class NewQuestion extends Component {
                     Submit
                 </button>
                     </form>
-
-
-
-
-
-
             </div>
-
-
-
-
-
         )
     }
-
-
-
 }
-
-
 
 export default connect()(NewQuestion)
