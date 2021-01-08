@@ -19,8 +19,8 @@ class Questions extends Component {
             height: '30px',
             lineHeight: '30px',
         };
-        const {users, answeredQuestions, unAnsweredQuestions, authedUser}=this.props
-        
+        const { users, answeredQuestions, unAnsweredQuestions, authedUser } = this.props
+
         return (
             <div>
                 <Tabs defaultActiveKey="2" >
@@ -34,46 +34,31 @@ class Questions extends Component {
                         {unAnsweredQuestions.map((question) => {
                             return <QuestionListItem key={question.id} user={users[question.author]} authedUser={authedUser} question={question} />
                         }
-                        
+
                         )}
 
                     </TabPane>
 
                 </Tabs>
-
-            
-        
-   
             </div>
 
         )
     }
 
-
-
-
-
 }
 
 function mapStateToProps({ users, questions, authedUser }) {
-
-    console.log("mapStateToProps2", questions)
     const answeredQuestions = Object.values(questions).filter(question => question.optionOne.votes.includes(authedUser.id) ||
         question.optionTwo.votes.includes(authedUser.id)).sort((a, b) => b.timestamp - a.timestamp)
-
-
     const unAnsweredQuestions = Object.values(questions).filter(question => !(question.optionOne.votes.includes(authedUser.id)) &&
         !(question.optionTwo.votes.includes(authedUser.id))).sort((a, b) => b.timestamp - a.timestamp)
-
-   
-    console.log('nextQuestion', unAnsweredQuestions[0])
 
     return {
         authedUser,
         users,
         answeredQuestions,
         unAnsweredQuestions,
-     
+
     }
 }
 

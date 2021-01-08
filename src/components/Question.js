@@ -47,6 +47,8 @@ class Question extends Component {
             answer,
 
         ))
+        this.props.history.push(`/`)
+
 
     }
     render() {
@@ -100,7 +102,9 @@ class Question extends Component {
         ) : <div>Invalid question</div>
     }
 }
-function mapStateToProps({ users, questions, authedUser }, {id}) {
+function mapStateToProps({ users, questions, authedUser }, props) {
+    const { id } = props.match.params
+
    const question = questions[id]
    let hasVoted = false
    if (question.optionOne.votes.includes(authedUser.id) || question.optionTwo.votes.includes(authedUser.id)){

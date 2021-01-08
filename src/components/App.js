@@ -38,7 +38,7 @@ class App extends Component {
               <Route path='/leaderboard' component={LeaderBoard} />
               <Route path='/' exact component={Questions} />
               <Route path='/result/:id' component={Results} />
-              <Route path='/question/:id' exact component={() => <Question id={question.id} />} />
+              <Route path='/question/:id' exact component={Question} />
               <Route path="*" component= {NoMatch} />
 
               </Switch>
@@ -55,15 +55,9 @@ class App extends Component {
 
 
 function mapStateToProps({ authedUser, questions }) {
-  let question;
-  if (authedUser) {
-    const unAnsweredQuestions = Object.values(questions).filter(question => !(question.optionOne.votes.includes(authedUser.id)) &&
-      !(question.optionTwo.votes.includes(authedUser.id))).sort((a, b) => b.timestamp - a.timestamp)
-      if(unAnsweredQuestions.length>0) question=unAnsweredQuestions[0]
-  }
+  
   return {
-    authedUser,
-    question
+    authedUser
   }
 }
 

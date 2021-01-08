@@ -45,8 +45,6 @@ export function handleUserAnswer(qid, answer) {
 
     return (dispatch, getState) => {
         const { authedUser } = getState()
-
-
         dispatch(showLoading())
         return saveQuestionAnswer({
             answer,
@@ -54,7 +52,6 @@ export function handleUserAnswer(qid, answer) {
             authedUser: authedUser.id,
         })
             .then(() => {
-
                 dispatch(saveUserAnswer({ id: qid, answer, authedUser: authedUser.id }))
                 dispatch(saveQuestionAnswerToAuthedUser({ id: qid, answer, authedUser: authedUser.id }))
                 dispatch(hideLoading())
