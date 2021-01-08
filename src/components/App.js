@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import Login from './Login'
@@ -9,6 +9,7 @@ import Results from './Results'
 import LeaderBoard from './LeaderBoard'
 import NewQuestion from './NewQuestion'
 import Navigation from './Navigation'
+import NoMatch from './NoMatch'
 import '../App.css';
 import LoadingBar from 'react-redux-loading'
 
@@ -32,12 +33,17 @@ class App extends Component {
 
             <div>
               <Navigation />
-
+              <Switch>
               <Route path='/add' component={NewQuestion} />
               <Route path='/leaderboard' component={LeaderBoard} />
               <Route path='/all-questions' exact component={Questions} />
               <Route path='/question/:id' component={Results} />
               <Route path='/' exact component={() => <Question id={question.id} />} />
+              <Route path="*" component= {NoMatch} />
+
+              </Switch>
+              
+             
             </div> : <Login />}
         </Fragment>
       </Router>

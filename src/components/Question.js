@@ -50,16 +50,19 @@ class Question extends Component {
 
     }
     render() {
-        console.log('1234', this.props)
+       
         const radioStyle = {
             display: 'block',
             height: '30px',
             lineHeight: '30px',
         };
         const { question, index } = this.props
-        console.log('answer here is', question)
+       
         const { answer } = this.state;
 
+        if (question === null) {
+            return<p>Question does not exist</p>
+        }
         return question ? (
             <div key={question.id}>
                 <h2>question #{index}</h2>
