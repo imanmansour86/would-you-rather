@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom'
 
 class NewQuestion extends Component {
 
-    state = { //whenever we update UI based on current state of component, we use controlled component 
+    state = { 
         optionOne: '',
         optionTwo:'',
         toHome: false,

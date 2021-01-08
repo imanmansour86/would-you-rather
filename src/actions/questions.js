@@ -9,17 +9,15 @@ export function receiveQuestions(questions) {
     }
 }
 
-export function addQuestion(question){
+export function addQuestion(question) {
     return {
         type: ADD_QUESTION,
         question
     }
 }
 
+export function saveUserAnswer({ authedUser, id, answer }) {
 
-
-export function saveUserAnswer({authedUser, id, answer}) {
-  
     return {
         type: SAVE_USER_ANSWER,
         authedUser,

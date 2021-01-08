@@ -23,7 +23,7 @@ class App extends Component {
 
 
   render() {
-    console.log('App', this.props)
+    
     const { question } = this.props;
     return (
       <Router>

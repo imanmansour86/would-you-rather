@@ -76,8 +76,6 @@ class Question extends Component {
                 </Radio.Group>
                 {this.props.hasVoted ? 
                 <button className='btn'
-                    type='submit'
-                    disabled={answer === ''}
                     onClick={(e)=>{this.toResults(e, question.id)}}>
                     View Results
                  </button>
