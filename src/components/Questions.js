@@ -28,7 +28,6 @@ class Questions extends Component {
                         {unAnsweredQuestions.map((question) => {
                             return <QuestionListItem key={question.id} user={users[question.author]} authedUser={authedUser} question={question} />
                         }
-
                         )}
                     </TabPane>
                 </Tabs>
