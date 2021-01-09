@@ -53,7 +53,6 @@ class Question extends Component {
         }
         return question ? (
             <div key={question.id}>
-
                 <div>{this.props.users[question.author].name} asks:
                             <p>Would you rather</p></div>
                 {this.props.hasVoted ?
@@ -82,7 +81,7 @@ class Question extends Component {
                             disabled={answer === ''}
                             onClick={e => this.handleSubmit(e)}>
                             Answer
-                </button> </div>}
+                            </button> </div>}
                 <br /></div>
         ) : <div>Invalid question</div>
     }

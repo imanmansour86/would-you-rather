@@ -5,14 +5,16 @@ class LeaderBoard extends Component {
 
     render() {
         return (
-            <div>
+            <div className='leaderboard'>
                 {this.props.leaderBoardUsers.map((user) =>
                     <li key={user.id} value={user.id}>
                         <img src={user.avatar} alt={`Avatar of ${user.name}`} style={{ width: 20, padding: 2 }} />
                         {user.name}
-                        <p>Answered questions{user.answeredQuestions}</p>
-                        <p>Created questions{user.totalQuestions}</p>
-                        <p>Score{user.score}</p>
+                        <div>
+                            <h3>Answered questions: {user.answeredQuestions}</h3>
+                            <h3>Created questions: {user.totalQuestions}</h3>
+                            <h3 style={{ color: "red" }}>Score: {user.score}</h3> <br></br>
+                        </div>
                     </li>
                 )}
             </div>

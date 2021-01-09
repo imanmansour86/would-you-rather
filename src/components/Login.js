@@ -14,9 +14,7 @@ class Login extends Component {
 
     render() {
 
-
         return (
-
             <div>
                 <h1>Welcome to Would You Rather App!</h1>
                 <h1>Please sign in to continue</h1>
@@ -26,7 +24,6 @@ class Login extends Component {
                         <Option key={user.id} value={user.id}>
                             <img src={user.avatarURL} style={{ width: 20, padding: 2 }} />
                             {user.name}</Option>)}
-
                 </Select>
             </div>
         )

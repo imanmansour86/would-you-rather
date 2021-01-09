@@ -14,8 +14,8 @@ class Navigation extends React.Component {
   }
 
   render() {
-    const { authedUser, users, user } = this.props
-    const { avatarURL, name } = user
+    const { user } = this.props
+  
     return (
       <nav className='nav'>
         <Menu selectedKeys={[]} mode="horizontal">
@@ -23,7 +23,6 @@ class Navigation extends React.Component {
             <NavLink to='/' exact activeClassName='active'>
               Home
            </NavLink>
-
           </Menu.Item>
           <Menu.Item key="New Question">
             <NavLink to='/add' activeClassName='active'>
@@ -37,15 +36,9 @@ class Navigation extends React.Component {
            </Menu.Item>
 
            <Menu.Item key="Logout" style = {{float : "right"}}>
-
             <a className='logout' onClick={(e) => this.handleLogout(e)}>Logout</a>
-
             </Menu.Item>
-
-
             <Menu.Item key="user" style = {{float : "right"}}>
-            
-            
             Hello, {user.name} <img src={user.avatarURL} alt={`Avatar of ${user.name}`} className='avatar' style={{ width: 20 }} />
           </Menu.Item>
         </Menu>
@@ -59,8 +52,6 @@ function mapStateToProps({ users, authedUser }) {
   const user = users[authedUser.id]
 
   return {
-    authedUser,
-    users,
     user
 
   }

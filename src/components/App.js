@@ -23,7 +23,6 @@ class App extends Component {
 
 
   render() {
-    const { question } = this.props;
     return (
       <Router>
         <Fragment>
@@ -38,7 +37,6 @@ class App extends Component {
                 <Route path='/result/:id' component={Results} />
                 <Route path='/question/:id' exact component={Question} />
                 <Route path="*" component={NoMatch} />
-
               </Switch>
             </div> : <Login />}
         </Fragment>
@@ -48,7 +46,7 @@ class App extends Component {
 }
 
 
-function mapStateToProps({ authedUser, questions }) {
+function mapStateToProps({ authedUser }) {
 
   return {
     authedUser

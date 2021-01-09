@@ -30,9 +30,7 @@ class Questions extends Component {
                         }
 
                         )}
-
                     </TabPane>
-
                 </Tabs>
             </div>
 

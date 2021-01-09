@@ -32,7 +32,7 @@ class QuestionListItem extends Component {
     render() {
 
         const { question, user, authedUser } = this.props
-        const { answer } = this.state;
+
         let hasVoted = false
         if (question.optionOne.votes.includes(authedUser.id) || question.optionTwo.votes.includes(authedUser.id)) {
             hasVoted = true
@@ -42,7 +42,6 @@ class QuestionListItem extends Component {
         }
         return question ? (
             <div key={question.id}>
-
                 <div>{user.name} asks:
                             <p>Would you rather</p></div>
                 <ul>
@@ -52,17 +51,18 @@ class QuestionListItem extends Component {
                     </li>
                 </ul>
                 {hasVoted ?
-
-                    <button className='btn'
-                        onClick={(e) => { this.toResults(e, question.id) }}>
-                        View Results
+                    <div>
+                        <button className='btn'
+                            onClick={(e) => { this.toResults(e, question.id) }}>
+                            View Results
                  </button>
+                    </div>
                     :
-
-                    <button className='btn'
-                        onClick={e => this.handleSubmit(e)}>
-                        View Question
-                </button>}
+                    <div>
+                        <button className='btn'
+                            onClick={e => this.handleSubmit(e)}>
+                            View Question
+                </button> </div>}
                 <br /></div>
         ) : <div>Invalid question</div>
     }
