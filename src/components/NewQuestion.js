@@ -14,8 +14,8 @@ class NewQuestion extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         const { optionOne, optionTwo } = this.state
-        const { dispatch, id } = this.props
-        dispatch(handleAddQuestion(optionOne, optionTwo))
+        const { id } = this.props
+        this.props.handleAddQuestion(optionOne, optionTwo);
 
         this.setState(() => ({
             optionOne: '',
@@ -49,6 +49,7 @@ class NewQuestion extends Component {
             <div>
                 <h3 className='center'>Create new Question</h3>
                 <form className='new-question' >
+                    <h3 className='center'>Would you rather</h3>
                     <input type='text' className='textarea' maxLength={280}
                         placeholder="Enter first option"
                         value={optionOne}
@@ -60,11 +61,11 @@ class NewQuestion extends Component {
                         value={optionTwo}
                         onChange={this.handleChangeQuestion2} />
                     <br />
-                        <button className='btn'
-                            type='submit'
-                            disabled={optionOne === '' || optionTwo === ''}
-                            onClick={(e) => this.handleSubmit(e)}>
-                            Submit
+                    <button className='btn'
+                        type='submit'
+                        disabled={optionOne === '' || optionTwo === ''}
+                        onClick={(e) => this.handleSubmit(e)}>
+                        Submit
                 </button>
                 </form>
             </div>
@@ -72,4 +73,4 @@ class NewQuestion extends Component {
     }
 }
 
-export default connect()(NewQuestion)
+export default connect(null, { handleAddQuestion })(NewQuestion);

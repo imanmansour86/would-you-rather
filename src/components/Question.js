@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Radio } from 'antd';
 import { handleUserAnswer } from '../actions/shared'
-import { withRouter } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 
 class Question extends Component {
     state = {
@@ -51,6 +51,8 @@ class Question extends Component {
         if (question === null) {
             return <p>Question does not exist</p>
         }
+
+      
         return question ? (
             <div key={question.id}>
                 <div>{this.props.users[question.author].name} asks:
@@ -83,12 +85,16 @@ class Question extends Component {
                             Answer
                             </button> </div>}
                 <br /></div>
-        ) : <div>Invalid question</div>
+        ) : <Redirect to ='/NoMatch'/>
     }
 }
 function mapStateToProps({ users, questions, authedUser }, props) {
     const { id } = props.match.params
     const question = questions[id]
+
+    if(!question) {
+        return <Redirect to ='/NoMatch'/>
+    }
     let hasVoted = false
     if (question.optionOne.votes.includes(authedUser.id) || question.optionTwo.votes.includes(authedUser.id)) {
         hasVoted = true
