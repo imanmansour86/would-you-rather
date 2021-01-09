@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Menu } from 'antd';
 import { NavLink } from 'react-router-dom'
 import { setAuthedUser } from '../actions/authedUser'

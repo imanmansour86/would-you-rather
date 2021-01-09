@@ -20,7 +20,7 @@ class QuestionListItem extends Component {
     toResults = (e, id) => {
         const { question } = this.props
         e.preventDefault()
-        this.props.history.push(`/result/${question.id}`)
+        this.props.history.push(`/question/${question.id}`)
     }
 
 

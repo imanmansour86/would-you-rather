@@ -23,7 +23,7 @@ class Question extends Component {
         const { question } = this.props
         e.preventDefault()
 
-        this.props.history.push(`/result/${question.id}`)
+        this.props.history.push(`/question/${question.id}`)
     }
 
     handleSubmit = (e) => {
@@ -36,7 +36,7 @@ class Question extends Component {
             answer,
 
         ))
-        this.props.history.push(`/result/${question.id}`)
+        this.props.history.push(`/question/${question.id}`)
 
     }
     render() {
@@ -52,7 +52,7 @@ class Question extends Component {
             return <p>Question does not exist</p>
         }
 
-      
+
         return question ? (
             <div key={question.id}>
                 <div>{this.props.users[question.author].name} asks:
@@ -85,15 +85,15 @@ class Question extends Component {
                             Answer
                             </button> </div>}
                 <br /></div>
-        ) : <Redirect to ='/NoMatch'/>
+        ) : <Redirect to='/NoMatch' />
     }
 }
 function mapStateToProps({ users, questions, authedUser }, props) {
     const { id } = props.match.params
     const question = questions[id]
 
-    if(!question) {
-        return <Redirect to ='/NoMatch'/>
+    if (!question) {
+        return <Redirect to='/NoMatch' />
     }
     let hasVoted = false
     if (question.optionOne.votes.includes(authedUser.id) || question.optionTwo.votes.includes(authedUser.id)) {
