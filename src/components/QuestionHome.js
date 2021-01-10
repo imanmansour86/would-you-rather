@@ -3,7 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import Question from './Question'
 import Results from './Results'
-import { withRouter } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 
 const QuestionHome = ({
     hasVoted
@@ -21,6 +21,12 @@ const QuestionHome = ({
 function mapStateToProps({ questions, authedUser }, props) {
     const { id } = props.match.params
     const question = questions[id]
+
+    if (!question) {
+        return <Redirect to='/NoMatch' />
+    }
+
+
 
     let hasVoted = false
     if (question.optionOne.votes.includes(authedUser.id) || question.optionTwo.votes.includes(authedUser.id)) {
